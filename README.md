@@ -18,7 +18,7 @@
 * Um exemplo de código PHP vulnerável a falha em questão
 * Uma exploração da falha a partir do mesmo código PHP citado anteriormente (script e prova de conceito)
 
-<br />
+
 
 # **Falhas de segurança:** <p style="text-align: center;">1. Remote Code Execution (RCE)</p>
 
@@ -34,7 +34,7 @@ Uma vulnerabilidade de _Remote Code Execution (RCE)_ é uma falha que permite qu
 * Ransomware
     * O ato de executar códigos remotamente no servidor também permite a instalação de ransomwares. Eles encriptam todos os dados do servidor e oferecem a recuperação desses dados em troca de uma quantia em criptomoedas
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um vídeo no youtube que exemplifica um ataque que faz uso de RCE.</p>**
 
@@ -42,16 +42,16 @@ Uma vulnerabilidade de _Remote Code Execution (RCE)_ é uma falha que permite qu
  <img src="https://i.ytimg.com/vi/3ErMkc07VNk/maxresdefault.jpg" alt="ExploitDB - Apache HTTP Server 2.4.50 Remote Code Execution" width="480" height="270" border="1"/>
 </a></p>
 
-<br />
+
 
 No ataque em questão, é executada uma _reverse shell_ (onde o comando estabelece uma conexão direta entre o servidor e o cliente na porta especificada) permitindo acesso livre ao servidor pelo usuário do serviço vulnerável
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um exemplo de um _bugbounty_ que possui uma falha de segurança de RCE</p>**
 ### <p style="text-align: center;">[Remote Code Execution on www.semrush.com/my_reports on Logo upload](https://hackerone.com/reports/403417)</p>
 
-<br />
+
 
 ### **<p style="text-align: center;">Este é um exemplo de um código PHP vulnerável a RCE</p>**
 ```
@@ -64,7 +64,7 @@ No ataque em questão, é executada uma _reverse shell_ (onde o comando estabele
 ```
 Este código recebe do usuário uma string no parâmetro host e a aplica diretamente como argumento em um comando no sistema operacional, sem tratamento.
 
-<br />
+
 
 
 ### **<p style="text-align: center;">Uma simples forma de explorar essa falha é:</p>**
@@ -73,12 +73,12 @@ Este código recebe do usuário uma string no parâmetro host e a aplica diretam
 curl "http:/alvo.target/arquivo.php?host=[domínio qualquer];[comando]"
 ```
 
-<br />
+
 
 ### **<p style="text-align: center;">Exploração na prática</p>**
 <p style="text-align: center;"><img src="https://cdn.discordapp.com/attachments/847460307826638848/1097601913157062726/poc_RCE.gif"  width="960" height="530"></p>
 
-<br />
+
 
 # <p style="text-align: center;">2. Path Traversal</p>
 
@@ -92,7 +92,7 @@ Uma vulneravilidade de _Path Traversal_ é uma falha que permite que um atacante
 * Dibulgação de informações
     * Além de ler obter acesso ao arquivos, é possível, obviamente, exfiltrar todos os arquivos do servidor, causando um grande vazamento de dados.
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um vídeo no youtube que exemplifica um ataque que faz uso de _Path Traversal_.</p>**
 
@@ -100,16 +100,16 @@ Uma vulneravilidade de _Path Traversal_ é uma falha que permite que um atacante
  <img src="https://i.ytimg.com/vi/G8wnZDP3-eo/maxresdefault.jpg" alt="Exploit-DB - D-Link DAP-1620 A1 v1.01 - Directory Traversal" width="480" height="270" border="1"/>
 </a></p>
 
-<br />
+
 
 No exemplo acima, o ataque de _Path Traversal_ ocorre no campo `html_response_page` da aplicação. É possível especificar `../../../../../../../../../../../etc/passwd`. Isso é feito com o objetivo de "voltar" diversos diretórios no sistema e receber como resposta o arquivo /etc/passwd
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um exemplo de um _bugbounty_ que possui uma falha de segurança de _Path Traversal_</p>**
 ### <p style="text-align: center;">[Path traversal on ████████](https://hackerone.com/reports/217344)</p>
 
-<br />
+
 
 ### **<p style="text-align: center;">Este é um exemplo de um código PHP vulnerável a _Path Traversal_</p>**
 ```
@@ -121,7 +121,7 @@ include ( "/home/users/phpguru/templates/" . $template );
 ```
 Este código é vulnerável a _Path Traversal_ no cookie chamado TEMPLATE. Quando explorado, a response terá o conteúdo do arquivo especificado
 
-<br />
+
 
 ### **<p style="text-align: center;">Uma simples forma de explorar essa falha é:</p>**
 
@@ -129,12 +129,12 @@ Este código é vulnerável a _Path Traversal_ no cookie chamado TEMPLATE. Quand
 curl -b "TEMPLATE=../../../../../../../../../[arquivo]" "http:/alvo.target/"
 ```
 
-<br />
+
 
 ### **<p style="text-align: center;">Exploração na prática</p>**
 <p style="text-align: center;"><img src="https://cdn.discordapp.com/attachments/847460307826638848/1097616950349266954/poc_pt.gif"  width="960" height="530"></p>
 
-<br />
+
 
 # <p style="text-align: center;">3. Information Leakage</p>
 
@@ -146,11 +146,11 @@ _Information Leakage_ se dá, simplesmente, quando os dados acabam em algum luga
 * Comunicações eletrônicas com intenção maliciosa
     * Além dos exemplos acima, também é possível obter informações confidenciais através de malwares e ataques de engenharia social. Ambos com alta taxa de sucesso, não é necessário muito (na maioria das vezes apenas uma ligação telefônica ou um email falsificado) e já é possível inserir um malware dentro da organização
 
-<br />
+
 
 Como _Information Leakage_ é um conceito muito amplo, este documento se limitará apenas à noção de Erros de configuração/Vazamento acidental a fim de exemplificar o conceito de forma mais tangível e com mais precisão.
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um vídeo no youtube que exemplifica o conceito de _Information Leakage_.</p>**
 
@@ -158,16 +158,15 @@ Como _Information Leakage_ é um conceito muito amplo, este documento se limitar
  <img src="https://i.ytimg.com/vi/cP3HuNsIi4g/maxresdefault.jpg" alt="Exploit-DB - D-Link DAP-1620 A1 v1.01 - Directory Traversal" width="480" height="270" border="1"/>
 </a></p>
 
-<br />
 
 No exemplo acima, Tod Beardsley comenta sobre a grande gama de _Information Leakage_ em sistemas de votação. Um dos conceitos que Tod aborda por exemplo é o Google Dorks para demonstrar como muitas informações importantes para uma organização estão públicas para qualquer um da internet.
 
-<br />
+
 
 ### **<p style="text-align: center;">Segue um exemplo de um _bugbounty_ que possui uma falha de segurança de _Path Traversal_</p>**
 ### <p style="text-align: center;">[critical information disclosure](https://hackerone.com/reports/1106505)</p>
 
-<br />
+
 
 ### **<p style="text-align: center;">Este é um exemplo de um código vulnerável a _Information Leakage_</p>**
 Para criarmos um ambiente vulnerável a _Information Leakeage_ basta iniciarmos um serviço do Apache e não realizar a configuração responsavel pela ocultação da versão da aplicação.
@@ -175,7 +174,7 @@ Para criarmos um ambiente vulnerável a _Information Leakeage_ basta iniciarmos 
 ```
 systemctl start apache2
 ```
-<br />
+
 
 ### **<p style="text-align: center;">Uma simples forma de explorar essa falha é:</p>**
 
@@ -184,7 +183,7 @@ curl "http://alvo.target/[diretorio-inexistente]"
 ```
 Isso é o suficiente para revelar diversas informações sobre a aplicação.
 
-<br />
+
 
 ### **<p style="text-align: center;">Exploração na prática</p>**
 <p style="text-align: center;"><img src="https://cdn.discordapp.com/attachments/847460307826638848/1097637940903034890/poc_infodisc.gif"  width="960" height="530"></p>
