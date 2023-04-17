@@ -195,9 +195,7 @@ Isso é o suficiente para revelar diversas informações sobre a aplicação.
 
 * Remote Code Execution (RCE)
     * Aula ministrada por [Rafael (ChOkO) Trassi](https://www.linkedin.com/in/rafael-trassi/) na FIAP
-<br />
 * Path Traversal
     * [OWASP - Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal) (exemplo 4)
-<br />
 * Information Leakage (não se trata de um código vulnerável, somente um serviço mal configurado)
     * Manual de instalação apache
